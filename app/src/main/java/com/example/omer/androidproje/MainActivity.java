@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            return "aq";
+            return "internet yok";
         }
 
         @Override
@@ -81,9 +81,11 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(s);
             tVMASon = (TextView) findViewById(R.id.tVMASon);
             tVMASon.setText(s);
-            Intent intIntent = new Intent(MainActivity.this,UserMenu.class);
-            intIntent.putExtra("Giris Json",s);
-            startActivity(intIntent);
+            if(s!="yanlış"&& s !="internet yok") {
+                Intent intIntent = new Intent(MainActivity.this, UserMenu.class);
+                intIntent.putExtra("Giris Json", s);
+                startActivity(intIntent);
+            }
         }
 
 
